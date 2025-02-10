@@ -3,18 +3,20 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody2D rb;
-    public float moveSpeed = 5f; 
-    public float moveDirectionX = 0f;
-    public float jumpForce = 7f;
+    public float moveSpeed = 5f; //Vitesse de déplacement en float
+    public float moveDirectionX = 0f; 
+    public float jumpForce = 7f; //Puissance du saut
 
-    public Transform groundCheck;
+    public Transform groundCheck; 
 
-    public float groundCheckRadius = 0.2f;
+    public float groundCheckRadius = 0.2f; 
 
-    public bool isGrounded = false;
+    public bool isGrounded = false; 
     public LayerMask listGroundLayers;
     public int maxAllowedJumps = 2;
     public int currentNumberJumps= 0;
+
+    private bool isFacingRight = true;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -24,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        moveDirectionX = Input.GetAxis("Horizontal");
+        moveDirectionX = Input.GetAxis("Horizontal"); //
         /*if (Input.GetKeyDown(KeyCode.Space)) {
             Jump();
         }*/
@@ -43,6 +45,7 @@ public class PlayerMovement : MonoBehaviour
             rb.linearVelocity.x,
             jumpForce
         );
+        Flip();
     }
     private void FixedUpdate() {
         rb.linearVelocity = new Vector2 (
@@ -58,5 +61,21 @@ public class PlayerMovement : MonoBehaviour
             groundCheckRadius,
             listGroundLayers
         );
+    }
+    private void OnDrawGizmos() {
+        if(groundCheck != null) {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(
+                groundCheck.position,
+                groundCheckRadius
+            );
+        }
+    }
+
+    private void Flip() {
+        if ((moveDirectionX > 0 && !isFacingRight) || (moveDirectionX < 0 && isFacingRight)) {
+            transform.Rotate(0,180,0);
+            isFacingRight = !isFacingRight;
+        } 
     }
 }
