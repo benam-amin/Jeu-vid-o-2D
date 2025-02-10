@@ -26,11 +26,11 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        moveDirectionX = Input.GetAxis("Horizontal"); //
+        moveDirectionX = Input.GetAxis("Horizontal"); //Récupère un float de la direction dans laquel le jouer essaie de diriger (bouton Q et D, fleche gauche et droite et Joystick)
         /*if (Input.GetKeyDown(KeyCode.Space)) {
             Jump();
         }*/
-        if(Input.GetButtonDown("Jump") && currentNumberJumps < maxAllowedJumps) {
+        if(Input.GetButtonDown("Jump") && currentNumberJumps < maxAllowedJumps) {           //Si le joueur clique sur le bouton de saut il saute
             Jump();
             currentNumberJumps +=1;
         }
