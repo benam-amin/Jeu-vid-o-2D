@@ -38,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
         if (isGrounded && !Input.GetButton("Jump")) {
             currentNumberJumps = 0;
         }
+        Flip();
     }
 
     private void Jump() {
@@ -45,7 +46,6 @@ public class PlayerMovement : MonoBehaviour
             rb.linearVelocity.x,
             jumpForce
         );
-        Flip();
     }
     private void FixedUpdate() {
         rb.linearVelocity = new Vector2 (
