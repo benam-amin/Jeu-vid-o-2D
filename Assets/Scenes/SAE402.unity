@@ -496,8 +496,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19e62d8c63cb428418c9567e9d2a0e0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxLifePoints: 5
-  currentLifePoints: 5
+  dataPlayer: {fileID: 11400000, guid: 29835c77e28461f4cb3c44cb369acb3a, type: 2}
   isInvulnerable: 0
   invulnerableTime: 2.25
   invulnerableFlash: 0.2
@@ -1384,6 +1383,10 @@ PrefabInstance:
     - target: {fileID: 2610904045072453693, guid: ebf26f09436105f429efdfa5ca2ad3e4, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 2623500698087196828, guid: ebf26f09436105f429efdfa5ca2ad3e4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -18
       objectReference: {fileID: 0}
     - target: {fileID: 4962103803143679528, guid: ebf26f09436105f429efdfa5ca2ad3e4, type: 3}
       propertyPath: m_Pivot.x

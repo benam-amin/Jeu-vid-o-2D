@@ -3,8 +3,7 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int maxLifePoints = 5;
-    public int currentLifePoints = 5;
+    public PlayerData dataPlayer;
     public bool isInvulnerable = false;
     public float invulnerableTime = 2.25f;
     public float invulnerableFlash = 0.2f;
@@ -12,15 +11,15 @@ public class PlayerHealth : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        currentLifePoints = maxLifePoints;
+        dataPlayer.currentLifePoints = dataPlayer.maxLifePoints;
     }
     public void Hurt(int damage = 1) {
             if (isInvulnerable) {
                 return ;
             }
             
-            currentLifePoints = currentLifePoints - damage;  
-            if (currentLifePoints <= 0) {
+            dataPlayer.currentLifePoints = dataPlayer.currentLifePoints - damage;  
+            if (dataPlayer.currentLifePoints <= 0) {
             Debug.Log("You died pov naze");
             Destroy(gameObject);
         }  else {

@@ -10,8 +10,8 @@ public class Enemy : MonoBehaviour
             if (listContacts[0].normal.y < -0.5f) { //est détruit si on lui saute dessus
                 Destroy(gameObject);
             } else {
-                PlayerHealth playerHealth = other.gameObject.GetComponent<PlayerHealth>();
-                playerHealth.Hurt();
+                PlayerHealth dataPlayer = other.gameObject.GetComponent<PlayerHealth>();
+                dataPlayer.Hurt();
             } 
         }
     }
