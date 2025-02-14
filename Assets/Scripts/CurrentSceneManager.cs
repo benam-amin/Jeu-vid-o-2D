@@ -19,9 +19,10 @@ public class CurrentSceneManager : MonoBehaviour
                 Time.timeScale = 0;
             }
         }
-
+#if UNITY_EDITOR 
         if(Input.GetKeyDown(KeyCode.R)) {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+#endif
     }
 }
