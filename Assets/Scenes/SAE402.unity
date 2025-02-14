@@ -267,6 +267,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverScreen: {fileID: 1980928523}
+  playerMovement: {fileID: 612092273}
+  isPaused: 0
   onPlayerDeath: {fileID: 11400000, guid: 94fb80b0fde061641880efe26aca523d, type: 2}
 --- !u!4 &502352066
 Transform:
