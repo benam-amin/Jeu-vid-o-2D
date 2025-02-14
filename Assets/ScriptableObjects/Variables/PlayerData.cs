@@ -4,5 +4,5 @@ using UnityEngine;
 public class PlayerData : ScriptableObject
 {
     public int currentLifePoints = 0;
-    public int maxLifePoints = 5;
+    public int maxLifePoints = 3;
 }

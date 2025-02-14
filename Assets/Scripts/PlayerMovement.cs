@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody2D rb;
+    public BoxCollider2D bc;
     public float moveSpeed = 5f; //Vitesse de déplacement en float
     public float moveDirectionX = 0f; 
     public float jumpForce = 7f; //Puissance du saut
@@ -22,7 +23,8 @@ public class PlayerMovement : MonoBehaviour
     
     private void OnEnable()
     {
-        onPlayerDeath.OnEventRaised += Die;    
+        onPlayerDeath.OnEventRaised += Die;
+
     }
 
     private void OnDisable()
@@ -32,6 +34,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Die() {
         enabled = false;
+        rb.bodyType = RigidbodyType2D.Static;
+        bc.enabled = false;
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
