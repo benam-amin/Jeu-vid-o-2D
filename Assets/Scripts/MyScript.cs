@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MyScript : MonoBehaviour
 {
+    //https://github.com/DanYellow/cours/tree/main/creation-et-design-interactif-s4/travaux-pratiques/numero-1/ressources/unity
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
