@@ -17,6 +17,22 @@ public class PlayerMovement : MonoBehaviour
     public int currentNumberJumps= 0;
 
     private bool isFacingRight = true;
+
+    public VoidEventChannel onPlayerDeath;
+    
+    private void OnEnable()
+    {
+        onPlayerDeath.OnEventRaised += Die;    
+    }
+
+    private void OnDisable()
+    {
+        onPlayerDeath.OnEventRaised -= Die;
+    }
+
+    void Die() {
+        enabled = false;
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
