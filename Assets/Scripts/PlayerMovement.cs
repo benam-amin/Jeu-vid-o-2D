@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform groundCheck; 
 
     public float groundCheckRadius = 0.2f; 
-
+    public Animator animator;
     public bool isGrounded = false; 
     public LayerMask listGroundLayers;
     public int maxAllowedJumps = 2;
@@ -57,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
         if (isPaused) {
             return;
         }
+        animator.SetFloat("VelocityX", rb.linearVelocityX);
         moveDirectionX = Input.GetAxis("Horizontal"); //Récupère un float de la direction dans laquel le jouer essaie de diriger (bouton Q et D, fleche gauche et droite et Joystick)
         /*if (Input.GetKeyDown(KeyCode.Space)) {
             Jump();
