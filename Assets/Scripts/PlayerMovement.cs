@@ -72,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
         Flip();
     }
 
-    private void Jump() {
+    public void Jump() {
         rb.linearVelocity = new Vector2 (
             rb.linearVelocity.x,
             jumpForce
