@@ -7,6 +7,7 @@ public class EnemyPatrol : MonoBehaviour
    public BoxCollider2D bc;
    public LayerMask listObstacleLayers;
    public float groundCheckRadius = 0.15f;
+   public Animator animator;
    public float moveSpeed = 3f;
    public bool isFacingRight = false ;
    public float distanceDetection = 1f;
@@ -18,6 +19,7 @@ public class EnemyPatrol : MonoBehaviour
          moveSpeed * transform.right.normalized.x,
         rb.linearVelocityY
     );    
+        animator.SetFloat("VelocityX", Mathf.Abs(rb.linearVelocityX));
         if(HasNotTouchedGround() || HasCollisionWithObstacles()) {Flip();}
    }
 

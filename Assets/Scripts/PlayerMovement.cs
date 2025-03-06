@@ -67,6 +67,9 @@ public class PlayerMovement : MonoBehaviour
         if(Input.GetButtonDown("Jump") && currentNumberJumps < maxAllowedJumps) {           //Si le joueur clique sur le bouton de saut il saute
             Jump();
             currentNumberJumps +=1;
+            if(currentNumberJumps > 1) {
+                animator.SetTrigger("DoubleJump");
+            }
         }
 
         if (isGrounded && !Input.GetButton("Jump")) {
