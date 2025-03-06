@@ -57,7 +57,9 @@ public class PlayerMovement : MonoBehaviour
         if (isPaused) {
             return;
         }
-        animator.SetFloat("VelocityX", rb.linearVelocityX);
+        animator.SetFloat("VelocityX", Mathf.Abs(rb.linearVelocityX));
+        animator.SetFloat("VelocityY", rb.linearVelocityY);
+        animator.SetBool("IsGrounded", isGrounded);
         moveDirectionX = Input.GetAxis("Horizontal"); //Récupère un float de la direction dans laquel le jouer essaie de diriger (bouton Q et D, fleche gauche et droite et Joystick)
         /*if (Input.GetKeyDown(KeyCode.Space)) {
             Jump();
