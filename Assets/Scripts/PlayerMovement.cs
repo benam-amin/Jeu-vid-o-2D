@@ -19,17 +19,25 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isFacingRight = true;
 
+    public bool isPaused = false;
+
     public VoidEventChannel onPlayerDeath;
+    public VoidEventChannel onPause;
+    public VoidEventChannel onResume;
     
     private void OnEnable()
     {
         onPlayerDeath.OnEventRaised += Die;
+        onResume.OnEventRaised += OnResume;
+        onPause.OnEventRaised += OnPause;
 
     }
 
     private void OnDisable()
     {
         onPlayerDeath.OnEventRaised -= Die;
+        onResume.OnEventRaised -= OnResume;
+        onPause.OnEventRaised -= OnPause;
     }
 
     void Die() {
@@ -46,6 +54,9 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isPaused) {
+            return;
+        }
         moveDirectionX = Input.GetAxis("Horizontal"); //Récupère un float de la direction dans laquel le jouer essaie de diriger (bouton Q et D, fleche gauche et droite et Joystick)
         /*if (Input.GetKeyDown(KeyCode.Space)) {
             Jump();
@@ -90,6 +101,13 @@ public class PlayerMovement : MonoBehaviour
                 groundCheckRadius
             );
         }
+    }
+
+    public void OnPause() {
+        isPaused = true;
+    }
+    public void OnResume() {
+        isPaused = false;
     }
 
     private void Flip() {

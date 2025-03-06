@@ -9,6 +9,7 @@ public class CurrentSceneManager : MonoBehaviour
     public GameObject pauseScreen; 
     public VoidEventChannel onPlayerDeath;
     public VoidEventChannel onPause;
+    public VoidEventChannel onResume;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -19,13 +20,11 @@ public class CurrentSceneManager : MonoBehaviour
     private void OnEnable()
     {
         onPlayerDeath.OnEventRaised += Die;    
-        onPause.OnEventRaised += Die;    
     }
 
     private void OnDisable()
     {
-        onPlayerDeath.OnEventRaised -= Die;    
-        onPause.OnEventRaised -= Die;    
+        onPlayerDeath.OnEventRaised -= Die;        
     }
 
     private void Die() {
@@ -36,13 +35,13 @@ public class CurrentSceneManager : MonoBehaviour
         if (Time.timeScale == 0) {
                 Time.timeScale = 1;
                 isPaused = false;
-                playerMovement.GetComponent<PlayerMovement>().enabled = true;
                 pauseScreen.SetActive(false);
+                onResume.Raise();
             } else {
                 Time.timeScale = 0;
                 isPaused = true;
-                playerMovement.GetComponent<PlayerMovement>().enabled = false;
                 pauseScreen.SetActive(true);
+                onPause.Raise();
             }
     }
     // Update is called once per frame
